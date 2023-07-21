@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} post_detail {% endblock %}
+
+{% block content %}
+<div class="col-md-11 mb-5  shadow p-3 mb-5 bg-white rounded mx-auto"> 
+<h4 class = 'text-center'>
+    {{object.owner}}
+    </h4>
+    
+    
+       
+          
+    <div class="col-md-8 mx-auto">
+        
+        
+        {% for photo in object.img_set.all %}
+    <img src = '{{photo.image.thumb_url}}' class='img-responsive center-block' width='100%'>
+        {% endfor %}   
+    </div>   
+    <div class="col-md-8 mb-5  shadow p-3 mb-5 bg-white rounded mx-auto text-justify">
+       <p class = 'text-center'>{{object.title}}</p><br> {{object.content}}
+    </div>
+
+</div>
+<div id = 'disqus_thread'>
+    
+</div>
+{% endblock %}
+{% block extra-script %}
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = '{{disqus_url}}';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier ='{{disqus_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.title = '{{disqus_title}}';
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://shm-4.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endblock %}

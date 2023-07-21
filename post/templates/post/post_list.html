@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load taggit_templatetags2_tags %}
+{% load sorl_thumbnail %}
+{% get_tags_for_object object_list as "tags" %}
+{%block title%} 게시물 목록 {%endblock%}
+{% block content%}
+<h2 class="text-center">
+    게시물 목록
+</h2>
+<a href = "{% url 'post:search' %}">게시물 검색</a>
+<div class="mt-5 text-center">
+    
+    {%for ob in object_list %}
+
+    <div class="col-md-3 mb-5  shadow p-3 mb-5 bg-white rounded mx-auto">
+    <a href="{% url 'post:post_detail' ob.id%}" style="color:black;">   
+    <p>
+        {{ob.title}}
+
+    </p>
+      </a>
+    {% for photo in ob.img_set.all %}
+    <img src = "{{photo.image.thumb_url}}">
+    
+    {% endfor %}
+    <hr>
+        
+        <div class="col-md-11 mb-5  shadow p-2 mb-5 bg-white rounded mx-auto text-left">
+            <strong>{{ob.owner}}:</strong> 
+    {{ob.title}}
+    {{ob.content}}
+        </div>
+        <br>
+
+    </div>
+    {% endfor %}
+  
+</div>
+{% endblock %}

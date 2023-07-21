@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}album_detail.html{% endblock %}
+
+{% block extra-style %}
+<style>
+.thumbnail {
+    border: 3px solid #C7C6C9;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="mt-5">
+        <span class="h2 align-middle" style='color:white;'>{{ object.name }}&emsp;</span>
+        <span class="h5 font-italic align-middle" style='color:white;'>{{ object.description }}</span>
+    </div>
+
+    
+
+    <div class="col-sl-5"> 
+
+        {% for photo in object.photo_set.all %} 
+        <div class="col-md-3 mb-5  shadow p-3 mb-5 bg-white rounded mx-auto"> 
+            <div class="thumbnail">
+                <a href="{{ photo.get_absolute_url }}">
+                    <img src="{{ photo.image.thumb_url }}" style="width: 100%;">
+                    
+                </a>
+            </div>
+            <ul>
+                <li class="font-italic">{{ photo.title }}</li>
+                <li class="font-italic">{{ photo.upload_dt|date:"Y-m-d" }}</li>
+            </ul>
+        </div>
+
+        {% endfor %} 
+
+    </div>
+
+{% endblock %}
+
