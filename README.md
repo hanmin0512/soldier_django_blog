@@ -6,6 +6,7 @@
 - goormIDE (ubuntu)
 
 ## 시스템 아키텍쳐
+- E-R Diagram ![E-R 다이어그램](https://github.com/hanmin0512/soldier_django_blog/assets/37041208/a9ec1a2a-5894-4c70-9942-9bc24e459738)
 
 
 ## 실행 화면 
